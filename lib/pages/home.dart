@@ -126,28 +126,7 @@ class _HomeState extends State<Home> {
             child: showPlayer ? bottomPanel() : Container(),
           )
         ]),
-        bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            onTap: onTabTapped,
-            currentIndex: _currentIndex,
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.book),
-                title: Text('Reading'),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.headset),
-                title: Text('Sermons'),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.attach_money),
-                title: Text('Giving'),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.picture_as_pdf),
-                title: Text('Bulletin'),
-              ),
-            ]));
+    );
   }
 
   Widget bottomPanel() {
