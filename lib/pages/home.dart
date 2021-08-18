@@ -1,5 +1,5 @@
-import 'package:BasswoodChurch/pages/giving_page.dart';
-import 'package:BasswoodChurch/util.dart';
+import 'package:CtkChurch/pages/giving_page.dart';
+import 'package:CtkChurch/util.dart';
 import 'package:audio_manager/audio_manager.dart';
 import 'package:flutter/material.dart';
 
@@ -112,7 +112,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Basswood Church'),
+          title: const Text('Christ the King Church'),
           actions: _getAppBarActions(),
         ),
         body: Column(children: <Widget>[
