@@ -30,8 +30,7 @@ class _ListenButtonWidgetState extends State<ListenButtonWidget> {
             AudioManager.instance
                 .start(widget.url, widget.title,
                     desc: widget.description,
-                    cover:
-                        'https://www.basswoodchurch.net/wp-content/uploads/powerpress/BasswoodLogo-459.jpg')
+                    cover: '')
                 .then((String err) {
               print('Error' + err.toString());
             });
