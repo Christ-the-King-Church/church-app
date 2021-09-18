@@ -23,11 +23,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.12.2
+  http:
   intl: ^0.16.1
   scrollable_positioned_list: ^0.1.7
   url_launcher: ^5.5.2
-  flutter_launcher_icons: "^0.7.3"
   flutter_webview_plugin: ^0.3.11
   path_provider:
   audio_manager: ^0.5.5+3
@@ -46,6 +45,7 @@ flutter_icons:
 
 dev_dependencies:
   test:
+  flutter_launcher_icons:
 
   flutter_test:
     sdk: flutter

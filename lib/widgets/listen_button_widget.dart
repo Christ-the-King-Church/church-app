@@ -2,10 +2,10 @@ import 'package:audio_manager/audio_manager.dart';
 import 'package:flutter/material.dart';
 
 class ListenButtonWidget extends StatefulWidget {
-  ListenButtonWidget({this.title, this.description, this.url});
-  String title;
-  String description;
-  String url;
+  const ListenButtonWidget({this.title, this.description, this.url});
+  final String title;
+  final String description;
+  final String url;
 
   @override
   State<StatefulWidget> createState() =>
@@ -17,8 +17,10 @@ class _ListenButtonWidgetState extends State<ListenButtonWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: <Widget>[FlatButton.icon(
-        color: Colors.blueGrey,
+    return Column(children: <Widget>[TextButton.icon(
+        style: ButtonStyle(
+            foregroundColor: MaterialStateProperty.all(Colors.white),
+            backgroundColor: MaterialStateProperty.all(Colors.blueGrey)),
         icon: const Icon(Icons.headset),
         label: const Text('LISTEN'),
         onPressed: () {
@@ -30,7 +32,7 @@ class _ListenButtonWidgetState extends State<ListenButtonWidget> {
                     desc: widget.description,
                     cover:
                         'https://www.basswoodchurch.net/wp-content/uploads/powerpress/BasswoodLogo-459.jpg')
-                .then((err) {
+                .then((String err) {
               print('Error' + err.toString());
             });
           }
