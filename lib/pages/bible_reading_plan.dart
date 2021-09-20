@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:BasswoodChurch/widgets/listen_button_widget.dart';
+import 'package:CtkChurch/widgets/listen_button_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -38,7 +38,7 @@ Future<List<BrcDay>> _brcDaysFuture = _fetchBrcDays(http.Client());
 
 Future<List<BrcDay>> _fetchBrcDays(http.Client client) async {
   final Response response =
-      await client.get('https://www.basswoodchurch.net/app/brc.json');
+      await client.get(Uri.parse('https://www.basswoodchurch.net/app/brc.json'));
 
   // Use the compute function to run parseBrcDays in a separate isolate
   return compute(parseBrcDays, response.body);
@@ -141,8 +141,11 @@ class _BrcDaysListState extends State<BrcDaysList> {
             ),
             ButtonBar(
               children: <Widget>[
-                FlatButton.icon(
-                  color: Colors.blueGrey,
+                TextButton.icon(
+                  style: ButtonStyle(
+                      foregroundColor: MaterialStateProperty.all(Colors.white),
+                      backgroundColor: MaterialStateProperty.all(
+                          Colors.blueGrey)),
                   icon: const Icon(Icons.remove_red_eye),
                   label: const Text('READ'),
                   onPressed: () {

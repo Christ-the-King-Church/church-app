@@ -10,11 +10,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      color: Colors.blueGrey,
       theme: Theme.of(context).copyWith(
-          accentIconTheme:
-              Theme.of(context).accentIconTheme.copyWith(color: Colors.white),
-          accentColor: Colors.blueAccent,
-          primaryColor: Colors.blueGrey,
+          colorScheme: Theme.of(context).colorScheme.copyWith(
+            primary: Colors.blueGrey,
+            secondary: Colors.blueAccent,
+          ),
           primaryIconTheme:
               Theme.of(context).primaryIconTheme.copyWith(color: Colors.white),
           primaryTextTheme: Theme.of(context)
