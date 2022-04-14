@@ -56,33 +56,33 @@ class CalendarEventItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(event.summary,
-                      maxLines: 1,
-                      style: GoogleFonts.nunito(
-                          color: BODY2,
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold)),
-                  Text(_date(),
-                      maxLines: 1,
-                      style: GoogleFonts.nunito(
-                          color: GREY3,
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w400)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      SizedBox(
-                          width: 300.0,
-                          height: 20.0,
-                          child: Text(event.location,
-                              maxLines: 1,
-                              style: GoogleFonts.nunito(
-                                  color: GREY3,
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.w400))),
-                    ],
-                  ),
+                  Flexible(
+                      child: Text(event.summary,
+                          overflow: TextOverflow.ellipsis,
+                          softWrap: true,
+                          maxLines: 1,
+                          style: GoogleFonts.nunito(
+                              color: BODY2,
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold))),
+                  Flexible(
+                      child: Text(_date(),
+                          overflow: TextOverflow.ellipsis,
+                          softWrap: true,
+                          maxLines: 1,
+                          style: GoogleFonts.nunito(
+                              color: GREY3,
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w400))),
+                  Flexible(
+                      child: Text(event.location,
+                          overflow: TextOverflow.ellipsis,
+                          softWrap: true,
+                          maxLines: 1,
+                          style: GoogleFonts.nunito(
+                              color: GREY3,
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w400))),
                 ],
               )),
               Column(
