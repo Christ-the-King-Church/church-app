@@ -13,6 +13,7 @@ import '../utils/color_scheme.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/green_button.dart';
+import '../../widgets/my_progress_indicator.dart';
 
 import 'reading_page.dart';
 
@@ -39,7 +40,7 @@ class BibleReadingPlan extends StatelessWidget {
                 numRefocuses: numRefocuses,
                 urlCallback: urlCallback,
               )
-            : const Center(child: CircularProgressIndicator());
+            : const MyProgressIndicator();
       });
 }
 

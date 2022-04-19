@@ -4,6 +4,7 @@ import 'package:table_calendar/table_calendar.dart';
 
 import './widgets/lat_lng_map.dart';
 import '../../utils/color_scheme.dart';
+import '../../widgets/my_progress_indicator.dart';
 import 'calendar_event_entity.dart';
 import 'calendar_event_item.dart';
 import 'calendar_service.dart';
@@ -43,13 +44,7 @@ class _CalendarPageWidgetState extends State {
     return Scaffold(
         body: Container(
       color: MAIN1,
-      child: isLoad
-          ? _column(context)
-          : const Center(
-              child: CircularProgressIndicator(
-                color: SECOND1,
-              ),
-            ),
+      child: isLoad ? _column(context) : const MyProgressIndicator(),
     ));
   }
 
