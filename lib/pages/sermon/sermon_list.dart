@@ -30,6 +30,7 @@ class SermonList extends StatefulWidget {
 
 class _SermonListState extends State<SermonList> {
   _SermonListState();
+  bool isLoad = false;
   List<SermonEntity> list = [];
   final ItemScrollController itemScrollController = ItemScrollController();
   final ItemPositionsListener itemPositionsListener =
@@ -45,24 +46,35 @@ class _SermonListState extends State<SermonList> {
   @override
   Widget build(BuildContext context) => Container(
       color: MAIN1,
-      child: ScrollablePositionedList.builder(
-        itemCount: list.length,
-        itemBuilder: (context, index) {
-          return SermonItem(
-            key: UniqueKey(),
-            sermon: list[index],
-            urlCallback: widget.urlCallback,
-          );
-        },
-        itemScrollController: itemScrollController,
-        itemPositionsListener: itemPositionsListener,
-      ));
+      child: isLoad
+          ? _content()
+          : const Center(
+              child: CircularProgressIndicator(
+                color: SECOND1,
+              ),
+            ));
+
+  Widget _content() {
+    return ScrollablePositionedList.builder(
+      itemCount: list.length,
+      itemBuilder: (context, index) {
+        return SermonItem(
+          key: UniqueKey(),
+          sermon: list[index],
+          urlCallback: widget.urlCallback,
+        );
+      },
+      itemScrollController: itemScrollController,
+      itemPositionsListener: itemPositionsListener,
+    );
+  }
 
   void _initSermonList() async {
     var _list = await SermonService.getSermonList();
 
     setState(() {
       list = _list;
+      isLoad = true;
     });
   }
 }
