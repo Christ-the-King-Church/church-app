@@ -24,6 +24,7 @@ class CalendarEventPage extends MaterialPageRoute<void> {
             ),
             body: CalendarEventPageWidget(
               event: event,
+              key: UniqueKey(),
             ),
           );
         });
@@ -32,8 +33,8 @@ class CalendarEventPage extends MaterialPageRoute<void> {
 
 class CalendarEventPageWidget extends StatefulWidget {
   const CalendarEventPageWidget({
-    Key key,
-    this.event,
+    required Key key,
+    required this.event,
   }) : super(key: key);
   final CalendarEventEntity event;
   @override
@@ -95,6 +96,7 @@ class _CalendarEventPageWidgetState extends State<CalendarEventPageWidget> {
         LatLngMap(
           latitude: widget.event.latitude,
           longitude: widget.event.longitude,
+          key: UniqueKey(),
         ),
       ],
     );

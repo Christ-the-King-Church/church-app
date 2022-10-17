@@ -25,10 +25,10 @@ class _HomeState extends State<Home> {
 
   bool isPlaying = false;
   bool showPlayer = false;
-  Duration _duration;
-  Duration _position;
-  double _slider;
-  double _sliderVolume;
+  late Duration _duration;
+  late Duration _position;
+  late double _slider;
+  late double _sliderVolume;
   num curIndex = 0;
   PlayMode playMode = AudioManager.instance.playMode;
   String currentUrl = '';
@@ -46,12 +46,15 @@ class _HomeState extends State<Home> {
     // await session.configure(const AudioSessionConfiguration.speech());
 
     tabScreens = [
-      null,
-      SermonList(urlCallback: (str) {
-        setState(() {
-          currentUrl = str;
-        });
-      }),
+      const Text(''),
+      SermonList(
+        urlCallback: (str) {
+          setState(() {
+            currentUrl = str;
+          });
+        },
+        key: UniqueKey(),
+      ),
       GivingPageWidget(),
       BulletinPageWidget(),
     ];
@@ -425,11 +428,14 @@ class _HomeState extends State<Home> {
 
   Widget _tabContent() {
     if (_currentIndex == 1) {
-      return SermonList(urlCallback: (str) {
-        setState(() {
-          currentUrl = str;
-        });
-      });
+      return SermonList(
+        urlCallback: (str) {
+          setState(() {
+            currentUrl = str;
+          });
+        },
+        key: UniqueKey(),
+      );
     }
 
     if (_currentIndex == 2) {

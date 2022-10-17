@@ -5,10 +5,10 @@ import '../widgets/green_button.dart';
 class ListenButtonWidget extends StatefulWidget {
   final void Function(String url) urlCallback;
   ListenButtonWidget({
-    this.title,
-    this.description,
-    this.url,
-    this.urlCallback,
+    required this.title,
+    required this.description,
+    required this.url,
+    required this.urlCallback,
   });
   String title;
   String description;

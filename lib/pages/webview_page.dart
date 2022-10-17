@@ -13,21 +13,21 @@ class _SermonsPageWidgetState extends State {
   final flutterWebViewPlugin = FlutterWebviewPlugin();
 
   // On destroy stream
-  StreamSubscription _onDestroy;
+  late StreamSubscription _onDestroy;
 
   // On urlChanged stream
-  StreamSubscription<String> _onUrlChanged;
+  late StreamSubscription<String> _onUrlChanged;
 
   // On urlChanged stream
-  StreamSubscription<WebViewStateChanged> _onStateChanged;
+  late StreamSubscription<WebViewStateChanged> _onStateChanged;
 
-  StreamSubscription<WebViewHttpError> _onHttpError;
+  late StreamSubscription<WebViewHttpError> _onHttpError;
 
-  StreamSubscription<double> _onProgressChanged;
+  late StreamSubscription<double> _onProgressChanged;
 
-  StreamSubscription<double> _onScrollYChanged;
+  late StreamSubscription<double> _onScrollYChanged;
 
-  StreamSubscription<double> _onScrollXChanged;
+  late StreamSubscription<double> _onScrollXChanged;
 
   @override
   void initState() {

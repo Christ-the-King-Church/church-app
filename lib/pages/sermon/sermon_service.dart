@@ -8,23 +8,23 @@ import 'package:intl/intl.dart';
 class SermonService {
   SermonService();
   static Future<List<SermonEntity>> getSermonList() async {
-    final _response = await http.get(
-        'https://app.dropwave.io/feed/show/christ-the-king-church-sermons');
+    final _response = await http.get(Uri.parse(
+        'https://app.dropwave.io/feed/show/christ-the-king-church-sermons'));
 
     print(_response.statusCode);
 
     if (_response.statusCode == 200) {
       var _decoded = new RssFeed.parse(_response.body);
-      return _decoded.items
+      return _decoded.items!
           .map((item) => SermonEntity(
-                title: item.title,
-                author: item.author,
-                time: DateFormat('hh:mm a').format(item.pubDate).toString(),
-                image: item.itunes.image.href,
+                title: item.title!,
+                author: item.author!,
+                time: DateFormat('hh:mm a').format(item.pubDate!).toString(),
+                image: item.itunes!.image!.href!,
                 date: DateFormat('EEEE, MMMM d, y')
-                    .format(item.pubDate)
+                    .format(item.pubDate!)
                     .toString(),
-                link: item.enclosure.url,
+                link: item.enclosure!.url!,
               ))
           .toList();
     } else {

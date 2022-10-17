@@ -9,9 +9,9 @@ class SermonItem extends StatelessWidget {
   final void Function(String url) urlCallback;
 
   const SermonItem({
-    Key key,
-    this.sermon,
-    this.urlCallback,
+    required Key key,
+    required this.sermon,
+    required this.urlCallback,
   }) : super(key: key);
 
   final SermonEntity sermon;

@@ -11,8 +11,8 @@ class SermonList extends StatefulWidget {
   final void Function(String url) urlCallback;
 
   const SermonList({
-    Key key,
-    this.urlCallback,
+    required Key key,
+    required this.urlCallback,
   }) : super(key: key);
   @override
   _SermonListState createState() => _SermonListState();

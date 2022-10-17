@@ -4,9 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 class GreenButton extends StatelessWidget {
   const GreenButton({
-    this.text,
-    this.onPressed,
-    this.icon,
+    required this.text,
+    required this.onPressed,
+    required this.icon,
   });
   final IconData icon;
   final String text;

@@ -2,11 +2,11 @@ import 'package:geocoding/geocoding.dart';
 
 class CalendarEventEntity {
   CalendarEventEntity({
-    this.summary,
-    this.description,
-    this.location,
-    this.dtstart,
-    this.dtend,
+    required this.summary,
+    required this.description,
+    required this.location,
+    required this.dtstart,
+    required this.dtend,
   });
 
   bool isCoord() {

@@ -1,4 +1,4 @@
-import 'package:CtkChurchConnect/widgets/green_button.dart';
+import '../../widgets/green_button.dart';
 import 'package:dart_date/src/dart_date.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 import 'package:intl/intl.dart';
 
 import '../../utils/color_scheme.dart';
-import '../../widgets/listen_button_widget.dart';
 import 'calendar_event_entity.dart';
 import 'calendar_event_page.dart';
 
@@ -24,8 +23,8 @@ String getTimeFromDateAndTime(String date) {
 
 class CalendarEventItem extends StatelessWidget {
   const CalendarEventItem({
-    Key key,
-    this.event,
+    required Key key,
+    required this.event,
   }) : super(key: key);
 
   final CalendarEventEntity event;

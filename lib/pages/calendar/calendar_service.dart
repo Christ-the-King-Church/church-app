@@ -63,6 +63,8 @@ class CalendarService {
         a.dtend.getMicrosecondsSinceEpoch > b.dtend.getMicrosecondsSinceEpoch
             ? a
             : b);
+
+    return (DateTime.now()).addDays(1);
     return max.dtend;
   }
 
