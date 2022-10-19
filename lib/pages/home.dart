@@ -211,6 +211,7 @@ class _HomeState extends State<Home> {
                     icon: getPlayModeIcon(playMode),
                     onPressed: () {
                       playMode = AudioManager.instance.nextMode();
+
                       setState(() {});
                     }),
                 Row(children: [
