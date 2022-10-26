@@ -1,11 +1,11 @@
 class SermonEntity {
   SermonEntity({
-    this.link,
-    this.title,
-    this.author,
-    this.time,
-    this.image,
-    this.date,
+    required this.link,
+    required this.title,
+    required this.author,
+    required this.time,
+    required this.image,
+    required this.date,
   });
   final String link;
   final String title;

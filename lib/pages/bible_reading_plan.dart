@@ -20,8 +20,8 @@ import 'reading_page.dart';
 class BibleReadingPlan extends StatelessWidget {
   final void Function(String url) urlCallback;
   const BibleReadingPlan({
-    this.numRefocuses,
-    this.urlCallback,
+    required this.numRefocuses,
+    required this.urlCallback,
   });
 
   final int numRefocuses;
@@ -36,9 +36,10 @@ class BibleReadingPlan extends StatelessWidget {
 
         return snapshot.hasData
             ? BrcDaysList(
-                brcDays: snapshot.data,
+                brcDays: snapshot.data!,
                 numRefocuses: numRefocuses,
                 urlCallback: urlCallback,
+                key: UniqueKey(),
               )
             : const MyProgressIndicator();
       });
@@ -48,7 +49,7 @@ Future<List<BrcDay>> _brcDaysFuture = _fetchBrcDays(http.Client());
 
 Future<List<BrcDay>> _fetchBrcDays(http.Client client) async {
   final Response response =
-      await client.get('https://ctk-app.jcb3.de/brc.json');
+      await client.get(Uri.parse('https://ctk-app.jcb3.de/brc.json'));
 
   // Use the compute function to run parseBrcDays in a separate isolate
   return compute(parseBrcDays, response.body);
@@ -65,7 +66,10 @@ List<BrcDay> parseBrcDays(String responseBody) {
 }
 
 class BrcDay {
-  BrcDay({this.date, this.passage, this.friendlyPassage});
+  BrcDay(
+      {required this.date,
+      required this.passage,
+      required this.friendlyPassage});
 
   factory BrcDay.fromJson(Map<String, dynamic> json) {
     return BrcDay(
@@ -82,22 +86,20 @@ class BrcDay {
 class BrcDaysList extends StatefulWidget {
   final void Function(String url) urlCallback;
   const BrcDaysList({
-    Key key,
-    this.brcDays,
-    this.numRefocuses,
-    this.urlCallback,
+    required Key key,
+    required this.brcDays,
+    required this.numRefocuses,
+    required this.urlCallback,
   }) : super(key: key);
   final List<BrcDay> brcDays;
   final int numRefocuses;
 
   @override
-  _BrcDaysListState createState() => _BrcDaysListState(brcDays: brcDays);
+  BrcDaysListState createState() => BrcDaysListState();
 }
 
-class _BrcDaysListState extends State<BrcDaysList> {
-  _BrcDaysListState({this.brcDays});
-
-  final List<BrcDay> brcDays;
+class BrcDaysListState extends State<BrcDaysList> {
+  BrcDaysListState();
   final ItemScrollController itemScrollController = ItemScrollController();
   final ItemPositionsListener itemPositionsListener =
       ItemPositionsListener.create();
@@ -123,8 +125,9 @@ class _BrcDaysListState extends State<BrcDaysList> {
     final DateTime today = DateTime(now.year, now.month, now.day);
 
     // Get index of current day, or 0 if no match
-    final int index =
-        max(brcDays.indexWhere((BrcDay element) => element.date == today), 0);
+    final int index = max(
+        widget.brcDays.indexWhere((BrcDay element) => element.date == today),
+        0);
 
     Future<void>.delayed(const Duration(milliseconds: 0),
         () => itemScrollController.jumpTo(index: index));
@@ -132,7 +135,7 @@ class _BrcDaysListState extends State<BrcDaysList> {
 
   @override
   Widget build(BuildContext context) => ScrollablePositionedList.builder(
-        itemCount: brcDays.length,
+        itemCount: widget.brcDays.length,
         itemBuilder: (BuildContext context, int index) =>
             buildBrcDay(context, index),
         itemScrollController: itemScrollController,
@@ -160,14 +163,14 @@ class _BrcDaysListState extends State<BrcDaysList> {
                 children: [
                   Text(
                       DateFormat('EEEE, MMMM d, y')
-                          .format(brcDays[index].date)
+                          .format(widget.brcDays[index].date)
                           .toString(),
                       maxLines: 1,
                       style: GoogleFonts.nunito(
                           color: BODY2,
                           fontSize: 19.0,
                           fontWeight: FontWeight.bold)),
-                  Text(brcDays[index].friendlyPassage,
+                  Text(widget.brcDays[index].friendlyPassage,
                       maxLines: 1,
                       style: GoogleFonts.nunito(
                           color: GREY3,
@@ -186,21 +189,22 @@ class _BrcDaysListState extends State<BrcDaysList> {
                         text: '',
                         icon: Icons.remove_red_eye,
                         onPressed: () {
-                          Navigator.push(
-                              context, ReadingPage(brcDays[index].passage));
+                          Navigator.push(context,
+                              ReadingPage(widget.brcDays[index].passage));
                         },
                       )),
                   Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: 5.0, horizontal: 10.0),
                       child: ListenButtonWidget(
-                          title: brcDays[index].passage.toString(),
+                          title: widget.brcDays[index].passage.toString(),
                           description: 'Welcome to the Feast',
                           urlCallback: widget.urlCallback,
                           url: 'https://ctk-app.jcb3.de/listen/' +
-                              Uri.encodeComponent(
-                                  brcDays[index].passage.toString().trim() +
-                                      '.mp3'))),
+                              Uri.encodeComponent(widget.brcDays[index].passage
+                                      .toString()
+                                      .trim() +
+                                  '.mp3'))),
                 ],
               ),
             ],

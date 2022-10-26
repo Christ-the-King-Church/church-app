@@ -17,11 +17,11 @@ class CalendarPageWidget extends StatefulWidget {
 class _CalendarPageWidgetState extends State {
   // Instance of WebView plugin
 
-  List<CalendarEventEntity> _list;
-  List<CalendarEventEntity> _selectedEvents;
+  late List<CalendarEventEntity> _list;
+  late List<CalendarEventEntity> _selectedEvents;
   bool isLoad = false;
 
-  Widget mapWidget;
+  late Widget mapWidget;
 
   @override
   void initState() {
@@ -116,6 +116,7 @@ class _CalendarPageWidgetState extends State {
       mapWidget = LatLngMap(
         latitude: _selectedEvents.first.latitude,
         longitude: _selectedEvents.first.longitude,
+        key: UniqueKey(),
       );
     });
   }

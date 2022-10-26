@@ -11,8 +11,8 @@ class SermonList extends StatefulWidget {
   final void Function(String url) urlCallback;
 
   const SermonList({
-    Key key,
-    this.urlCallback,
+    required Key key,
+    required this.urlCallback,
   }) : super(key: key);
   @override
   _SermonListState createState() => _SermonListState();
@@ -34,7 +34,7 @@ class _SermonListState extends State<SermonList> {
 
   @override
   Widget build(BuildContext context) => Container(
-      color: MAIN1, child: isLoad ? _content() : const MyProgressIndicator());
+      color: MAIN1, child:  _content());
 
   Widget _content() {
     return ScrollablePositionedList.builder(

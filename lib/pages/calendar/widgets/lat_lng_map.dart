@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import '../../../utils/color_scheme.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong/latlong.dart';
+import 'package:latlong2/latlong.dart';
 
 class LatLngMap extends StatelessWidget {
   final double latitude;
   final double longitude;
 
   LatLngMap({
-    Key key,
-    this.latitude,
-    this.longitude,
+    required Key key,
+    required this.latitude,
+    required this.longitude,
   }) : super(key: key);
 
   @override
@@ -27,25 +27,25 @@ class LatLngMap extends StatelessWidget {
                 center: LatLng(latitude, longitude),
                 zoom: 15,
               ),
-              layers: [
-                TileLayerOptions(
-                  urlTemplate:
-                      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                  subdomains: ['a', 'b', 'c'],
-                ),
-                MarkerLayerOptions(
-                  markers: [
-                    // Marker(
-                    //   width: 80.0,
-                    //   height: 80.0,
-                    //   point: LatLng(36.0263899, -84.1492908),
-                    //   builder: (ctx) => Container(
-                    //     child: FlutterLogo(),
-                    //   ),
-                    // ),
-                  ],
-                ),
-              ],
+              // layers: [
+              //   TileLayerOptions(
+              //     urlTemplate:
+              //         "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+              //     subdomains: ['a', 'b', 'c'],
+              //   ),
+              //   MarkerLayerOptions(
+              //     markers: [
+              //       // Marker(
+              //       //   width: 80.0,
+              //       //   height: 80.0,
+              //       //   point: LatLng(36.0263899, -84.1492908),
+              //       //   builder: (ctx) => Container(
+              //       //     child: FlutterLogo(),
+              //       //   ),
+              //       // ),
+              //     ],
+              //   ),
+              //],
             )),
       ),
     );
