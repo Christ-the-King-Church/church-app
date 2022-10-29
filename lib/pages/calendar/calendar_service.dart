@@ -58,12 +58,18 @@ class CalendarService {
   }
 
   static DateTime lastDay(List<CalendarEventEntity> list) {
+
     final CalendarEventEntity max = list.reduce((CalendarEventEntity a,
             CalendarEventEntity b) =>
         a.dtend.getMicrosecondsSinceEpoch > b.dtend.getMicrosecondsSinceEpoch
             ? a
             : b);
-    return max.dtend;
+
+    if(max.dtend > DateTime.now()) {
+      return max.dtend;
+    }
+
+    return DateTime.now().add(const Duration(days: 3));
   }
 
   static List<CalendarEventEntity> getEventsForDay(
