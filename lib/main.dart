@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: Theme.of(context).copyWith(
+          scaffoldBackgroundColor: MAIN1,
           canvasColor: MAIN1,
           primaryIconTheme:
               Theme.of(context).primaryIconTheme.copyWith(color: Colors.white),

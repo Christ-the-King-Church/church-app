@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'bible_reading_plan.dart';
 import 'bulletin_page.dart';
 import 'sermon/sermon_list.dart';
+import 'song/song_list.dart';
+import 'note/note_list.dart';
 import '../utils/color_scheme.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_share/flutter_share.dart';
@@ -173,6 +175,16 @@ class _HomeState extends State<Home> {
                     icon: Icon(Icons.calendar_today),
                     backgroundColor: MAIN1,
                     label: 'Calendar',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.list),
+                    backgroundColor: MAIN1,
+                    label: 'Songs',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.note),
+                    backgroundColor: MAIN1,
+                    label: 'Notes',
                   ),
                   // BottomNavigationBarItem(
                   //   icon: Icon(Icons.attach_money),
@@ -420,6 +432,14 @@ class _HomeState extends State<Home> {
       return 'Calendar';
     }
 
+    if (_currentIndex == 3) {
+      return 'Songs';
+    }
+
+    if (_currentIndex == 4) {
+      return 'Notes';
+    }
+
     return 'Christ the King Church';
   }
 
@@ -434,6 +454,14 @@ class _HomeState extends State<Home> {
 
     if (_currentIndex == 2) {
       return CalendarPageWidget();
+    }
+
+    if (_currentIndex == 3) {
+      return const SongList();
+    }
+
+    if (_currentIndex == 4) {
+      return const NoteList();
     }
 
     return BibleReadingPlan(
