@@ -171,11 +171,11 @@ class _HomeState extends State<Home> {
                     icon: Icon(Icons.headset),
                     label: 'Sermons',
                   ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.calendar_today),
-                    backgroundColor: MAIN1,
-                    label: 'Calendar',
-                  ),
+                  // BottomNavigationBarItem(
+                  //   icon: Icon(Icons.calendar_today),
+                  //   backgroundColor: MAIN1,
+                  //   label: 'Calendar',
+                  // ),
                   BottomNavigationBarItem(
                     icon: Icon(Icons.list),
                     backgroundColor: MAIN1,
@@ -428,15 +428,15 @@ class _HomeState extends State<Home> {
       return 'Sermons';
     }
 
-    if (_currentIndex == 2) {
-      return 'Calendar';
-    }
+    // if (_currentIndex == 2) {
+    //   return 'Calendar';
+    // }
 
-    if (_currentIndex == 3) {
+    if (_currentIndex == 2) {
       return 'Songs';
     }
 
-    if (_currentIndex == 4) {
+    if (_currentIndex == 3) {
       return 'Notes';
     }
 
@@ -452,15 +452,15 @@ class _HomeState extends State<Home> {
       });
     }
 
-    if (_currentIndex == 2) {
-      return CalendarPageWidget();
-    }
+    // if (_currentIndex == 2) {
+    //   return CalendarPageWidget();
+    // }
 
-    if (_currentIndex == 3) {
+    if (_currentIndex == 2) {
       return const SongList();
     }
 
-    if (_currentIndex == 4) {
+    if (_currentIndex == 3) {
       return const NoteList();
     }
 

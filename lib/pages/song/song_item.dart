@@ -42,12 +42,12 @@ class SongItem extends StatelessWidget {
                                   color: BODY2,
                                   fontSize: 18.0,
                                   fontWeight: FontWeight.bold)),
-                          Text(song.date,
-                              maxLines: 1,
-                              style: GoogleFonts.nunito(
-                                  color: GREY3,
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.w400)),
+                          // Text(song.date,
+                          //     maxLines: 1,
+                          //     style: GoogleFonts.nunito(
+                          //         color: GREY3,
+                          //         fontSize: 16.0,
+                          //         fontWeight: FontWeight.w400)),
                         ],
                       ))),
               Column(

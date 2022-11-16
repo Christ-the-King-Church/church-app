@@ -13,6 +13,14 @@ class MyApp extends StatelessWidget {
       theme: Theme.of(context).copyWith(
           scaffoldBackgroundColor: MAIN1,
           canvasColor: MAIN1,
+          inputDecorationTheme: const InputDecorationTheme(
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: LIGHT_GREY),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: LIGHT_GREY),
+            ),
+          ),
           primaryIconTheme:
               Theme.of(context).primaryIconTheme.copyWith(color: Colors.white),
           primaryTextTheme: Theme.of(context)
