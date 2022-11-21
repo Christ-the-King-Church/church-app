@@ -39,7 +39,7 @@ class _SongListState extends State<SongList> {
     if (query.isNotEmpty) {
       List<SongEntity> dummyListData = [];
       list.forEach((item) {
-        if (item.name.contains(query)) {
+        if ((item.name.toLowerCase()).contains(query.toLowerCase())) {
           dummyListData.add(item);
         }
       });
