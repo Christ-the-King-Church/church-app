@@ -6,9 +6,11 @@ PODS:
     - Flutter
   - flutter_webview_plugin (0.0.1):
     - Flutter
-  - path_provider (0.0.1):
+  - geocoding (1.0.5):
     - Flutter
-  - url_launcher (0.0.1):
+  - path_provider_ios (0.0.1):
+    - Flutter
+  - url_launcher_ios (0.0.1):
     - Flutter
 
 DEPENDENCIES:
@@ -16,8 +18,9 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_share (from `.symlinks/plugins/flutter_share/ios`)
   - flutter_webview_plugin (from `.symlinks/plugins/flutter_webview_plugin/ios`)
-  - path_provider (from `.symlinks/plugins/path_provider/ios`)
-  - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
+  - geocoding (from `.symlinks/plugins/geocoding/ios`)
+  - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
+  - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 EXTERNAL SOURCES:
   audio_manager:
@@ -28,19 +31,22 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_share/ios"
   flutter_webview_plugin:
     :path: ".symlinks/plugins/flutter_webview_plugin/ios"
-  path_provider:
-    :path: ".symlinks/plugins/path_provider/ios"
-  url_launcher:
-    :path: ".symlinks/plugins/url_launcher/ios"
+  geocoding:
+    :path: ".symlinks/plugins/geocoding/ios"
+  path_provider_ios:
+    :path: ".symlinks/plugins/path_provider_ios/ios"
+  url_launcher_ios:
+    :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
   audio_manager: 59466b2ea5552ebdcba8106796f09b9357ef12e0
-  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_share: 4be0208963c60b537e6255ed2ce1faae61cd9ac2
   flutter_webview_plugin: ed9e8a6a96baf0c867e90e1bce2673913eeac694
-  path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
-  url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
+  geocoding: 32cfcdb16d38d907caaba65e2e42ad10d38bee58
+  path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
+  url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
 
-PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.11.3

@@ -177,15 +177,15 @@ class _HomeState extends State<Home> {
                   //   label: 'Calendar',
                   // ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.list),
+                    icon: Icon(Icons.music_note),
                     backgroundColor: MAIN1,
                     label: 'Songs',
                   ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.note),
-                    backgroundColor: MAIN1,
-                    label: 'Notes',
-                  ),
+                  // BottomNavigationBarItem(
+                  //   icon: Icon(Icons.note),
+                  //   backgroundColor: MAIN1,
+                  //   label: 'Prayer Guide',
+                  // ),
                   // BottomNavigationBarItem(
                   //   icon: Icon(Icons.attach_money),
                   //   title: Text('Giving'),

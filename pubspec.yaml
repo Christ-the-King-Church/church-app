@@ -40,11 +40,12 @@ dependencies:
   dart_date: ^1.1.1
   flutter_map: ^0.12.0
   geocoding: ^2.0.4
+  share: ^2.0.4
 
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/icon/icon.jpg"  
+  image_path: "assets/icon/icon.jpg"
 
 
   # The following adds the Cupertino Icons font to your application.

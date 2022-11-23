@@ -16,6 +16,7 @@ import '../widgets/green_button.dart';
 import '../../widgets/my_progress_indicator.dart';
 
 import 'reading_page.dart';
+import 'package:share/share.dart';
 
 class BibleReadingPlan extends StatelessWidget {
   final void Function(String url) urlCallback;
@@ -165,13 +166,13 @@ class _BrcDaysListState extends State<BrcDaysList> {
                       maxLines: 1,
                       style: GoogleFonts.nunito(
                           color: BODY2,
-                          fontSize: 19.0,
+                          fontSize: 17.0,
                           fontWeight: FontWeight.bold)),
                   Text(brcDays[index].friendlyPassage,
-                      maxLines: 1,
+                      maxLines: 2,
                       style: GoogleFonts.nunito(
                           color: GREY3,
-                          fontSize: 17.0,
+                          fontSize: 13.0,
                           fontWeight: FontWeight.w400)),
                 ],
               )),
@@ -181,7 +182,24 @@ class _BrcDaysListState extends State<BrcDaysList> {
                 children: [
                   Padding(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 5.0, horizontal: 10.0),
+                          vertical: 1.0, horizontal: 10.0),
+                      child: GreenButton(
+                        text: '',
+                        icon: Icons.share,
+                        onPressed: () {
+                          Share.share('Bible Reading Plan for ' +
+                              DateFormat('EEEE, MMMM d, y')
+                                  .format(brcDays[index].date)
+                                  .toString() +
+                              ' is ' +
+                              brcDays[index].friendlyPassage +
+                              ' and can be read online at https://www.esv.org/' +
+                              brcDays[index].passage);
+                        },
+                      )),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 1.0, horizontal: 10.0),
                       child: GreenButton(
                         text: '',
                         icon: Icons.remove_red_eye,
@@ -192,7 +210,7 @@ class _BrcDaysListState extends State<BrcDaysList> {
                       )),
                   Padding(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 5.0, horizontal: 10.0),
+                          vertical: 1.0, horizontal: 10.0),
                       child: ListenButtonWidget(
                           title: brcDays[index].passage.toString(),
                           description: 'Welcome to the Feast',

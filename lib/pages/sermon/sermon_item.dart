@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import '../../widgets/green_button.dart';
 import 'sermon_entity.dart';
 import '../../utils/color_scheme.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import '../../widgets/listen_button_widget.dart';
+import 'package:share/share.dart';
 
 class SermonItem extends StatelessWidget {
   final void Function(String url) urlCallback;
@@ -74,6 +76,18 @@ class SermonItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 5.0, horizontal: 10.0),
+                      child: GreenButton(
+                        text: '',
+                        icon: Icons.share,
+                        onPressed: () {
+                          Share.share(
+                              'Check out this sermon from Christ the King Church! ' +
+                                  sermon.link);
+                        },
+                      )),
                   Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: 5.0, horizontal: 10.0),
