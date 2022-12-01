@@ -179,13 +179,13 @@ class _BrcDaysListState extends State<BrcDaysList> {
                       maxLines: 1,
                       style: GoogleFonts.nunito(
                           color: BODY2,
-                          fontSize: 17.0,
+                          fontSize: 18.0,
                           fontWeight: FontWeight.bold)),
                   Text(brcDays[index].friendlyPassage,
                       maxLines: 2,
                       style: GoogleFonts.nunito(
                           color: GREY3,
-                          fontSize: 13.0,
+                          fontSize: 16.0,
                           fontWeight: FontWeight.w400)),
                 ],
               )),
