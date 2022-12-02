@@ -48,8 +48,8 @@ class BibleReadingPlan extends StatelessWidget {
 Future<List<BrcDay>> _brcDaysFuture = _fetchBrcDays(http.Client());
 
 Future<List<BrcDay>> _fetchBrcDays(http.Client client) async {
-  final Response response = await client.get(
-      'https://api.airtable.com/v0/appZbhxlSSgeVCJTV/Bible%20Reading%20Plan?maxRecords=365&view=Grid%20view&api_key=keyivF3wiQDy6LK3z');
+  final Response response =
+      await client.get('https://ctk-app.jcb3.de/brc.json');
 
   // Use the compute function to run parseBrcDays in a separate isolate
   return compute(parseBrcDays, response.body);
@@ -57,36 +57,23 @@ Future<List<BrcDay>> _fetchBrcDays(http.Client client) async {
 
 // A function that will convert a response body into a List<BrcDay>
 List<BrcDay> parseBrcDays(String responseBody) {
-  final dynamic parsedJson = jsonDecode(responseBody);
-  final List<dynamic> items = parsedJson['records'] as List<dynamic>;
+  final List<dynamic> parsed = json.decode(responseBody) as List<dynamic>;
 
-  List<BrcDay> arr = [];
-  if (items.length > 0) {
-    for (final dynamic item in items) {
-      Map<String, dynamic> fields = item['fields'] as Map<String, dynamic>;
-
-      if (fields.length > 0) {
-        arr.add(BrcDay(
-          date: DateTime.parse(fields['Date'].toString()),
-          passage: fields['Passage'].toString(),
-          friendlyPassage: fields['Friendly Passage'].toString(),
-        ));
-      }
-    }
-  }
-
-  return arr;
+  return parsed
+      .map<BrcDay>(
+          (dynamic json) => BrcDay.fromJson(json as Map<String, dynamic>))
+      .toList();
 }
 
 class BrcDay {
   BrcDay({this.date, this.passage, this.friendlyPassage});
 
-  // factory BrcDay.fromJson(Map<String, dynamic> json) {
-  //   return BrcDay(
-  //       date: DateTime.parse(json['date'].toString()),
-  //       passage: json['passage'] as String,
-  //       friendlyPassage: json['friendlyPassage'] as String);
-  // }
+  factory BrcDay.fromJson(Map<String, dynamic> json) {
+    return BrcDay(
+        date: DateTime.parse(json['date'].toString()),
+        passage: json['passage'] as String,
+        friendlyPassage: json['friendlyPassage'] as String);
+  }
 
   final DateTime date;
   final String passage;
