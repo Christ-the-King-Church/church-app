@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
   bool showPlayer = false;
   Duration _duration;
   Duration _position;
-  double _slider;
+  double _slider = 0;
   double _sliderVolume;
   num curIndex = 0;
   PlayMode playMode = AudioManager.instance.playMode;
@@ -86,7 +86,10 @@ class _HomeState extends State<Home> {
           break;
         case AudioManagerEvents.seekComplete:
           _position = AudioManager.instance.position;
-          _slider = _position.inMilliseconds / _duration.inMilliseconds;
+
+          if (_duration.inMilliseconds != 0) {
+            _slider = _position.inMilliseconds / _duration.inMilliseconds;
+          }
           setState(() {});
           print("seek event is completed. position is [$args]/ms");
           break;
@@ -99,7 +102,9 @@ class _HomeState extends State<Home> {
           break;
         case AudioManagerEvents.timeupdate:
           _position = AudioManager.instance.position;
-          _slider = _position.inMilliseconds / _duration.inMilliseconds;
+          if (_duration.inMilliseconds != 0) {
+            _slider = _position.inMilliseconds / _duration.inMilliseconds;
+          }
           setState(() {});
           // AudioManager.instance.updateLrc(args["position"].toString());
           break;
@@ -231,12 +236,13 @@ class _HomeState extends State<Home> {
                     ),
                     onPressed: () {
                       setState(() {
-                        _slider =
-                            _slider - (1 / _duration.inMilliseconds * 10000);
-                        if (_slider < 0) {
-                          _slider = 0;
+                        if (_duration.inMilliseconds != 0) {
+                          _slider =
+                              _slider - (1 / _duration.inMilliseconds * 10000);
+                          if (_slider < 0) {
+                            _slider = 0;
+                          }
                         }
-
                         Duration msec = Duration(
                             milliseconds:
                                 (_duration.inMilliseconds * _slider).round());
@@ -267,13 +273,14 @@ class _HomeState extends State<Home> {
                     ),
                     onPressed: () {
                       setState(() {
-                        _slider =
-                            _slider + (1 / _duration.inMilliseconds * 30000);
+                        if (_duration.inMilliseconds != 0) {
+                          _slider =
+                              _slider + (1 / _duration.inMilliseconds * 30000);
 
-                        if (_slider > 1) {
-                          _slider = 1;
+                          if (_slider > 1) {
+                            _slider = 1;
+                          }
                         }
-
                         Duration msec = Duration(
                             milliseconds:
                                 (_duration.inMilliseconds * _slider).round());
@@ -363,6 +370,8 @@ class _HomeState extends State<Home> {
                     ),
                     child: Slider(
                       value: _slider ?? 0,
+                      min: 0.0,
+                      max: 1000.0,
                       onChanged: (value) {
                         setState(() {
                           _slider = value;
