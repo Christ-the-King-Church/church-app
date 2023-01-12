@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.2.0+10
+version: 1.2.2+12
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -31,7 +31,8 @@ dependencies:
   flutter_webview_plugin:
     git: https://github.com/nuc134r/flutter_webview_plugin.git
   path_provider:
-  audio_manager: ^0.8.2
+  audio_manager:
+    git: https://github.com/h2210316651/audio_manager.git
   google_fonts: ^1.1.0
   webfeed: ^0.7.0
   flutter_share: ^2.0.0

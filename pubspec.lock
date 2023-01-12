@@ -32,9 +32,11 @@ packages:
   audio_manager:
     dependency: "direct main"
     description:
-      name: audio_manager
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: "9aff4698b55cb5740e07de170045ee39b0b31000"
+      url: "https://github.com/h2210316651/audio_manager.git"
+    source: git
     version: "0.8.2"
   characters:
     dependency: transitive
